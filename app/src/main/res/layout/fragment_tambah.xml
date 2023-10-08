@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.tambah.TambahFragment"
     android:layout_margin="10dp"
+    android:id="@+id/tambah"
     android:orientation="vertical">
 
 
@@ -41,7 +42,6 @@
         android:layout_marginStart="20dp"
         android:hint="Masukkan Nama"
         android:textSize="15dp"
-        android:textColor="@color/black"
         android:id="@+id/nama"/>
 
 
@@ -64,7 +64,6 @@
         android:layout_marginStart="20dp"
         android:hint="Masukkan Alamat"
         android:textSize="15dp"
-        android:textColor="@color/black"
         android:id="@+id/alamat"/>
 
 
@@ -100,5 +99,5 @@
         android:layout_below="@+id/tgl"
         android:scaleType="center"
         android:text="Tambah"
-        android:id="@+id/btnminta"/>
+        android:id="@+id/btn"/>
 </RelativeLayout>

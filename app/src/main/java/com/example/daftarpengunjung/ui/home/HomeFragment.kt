@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.daftarpengunjung.R
 import com.example.daftarpengunjung.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -26,16 +27,16 @@ private var _binding: FragmentHomeBinding? = null
 
       val nama = arguments?.getString("nama")
       val alamat = arguments?.getString("alamat")
-      val tanggalMasuk = arguments?.getString("tanggalMasuk")
+      val tgl = arguments?.getString("tgl")
 
     val textView: TextView = binding.texthome
     val textViewNama: TextView = binding.nama
     val textViewAlamat: TextView = binding.alamat
-    val textViewTanggalMasuk: TextView = binding.tanggalMasuk
+    val textViewTgl: TextView = binding.tgl
 
     textViewNama.text = "Nama: $nama"
     textViewAlamat.text = "Alamat: $alamat"
-    textViewTanggalMasuk.text = "Tanggal Masuk: $tanggalMasuk"
+    textViewTgl.text = "Tanggal Masuk: $tgl"
     return root
   }
 
