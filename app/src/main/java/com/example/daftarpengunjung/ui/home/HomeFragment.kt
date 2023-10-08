@@ -9,8 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.daftarpengunjung.R
 import com.example.daftarpengunjung.databinding.FragmentHomeBinding
+import com.example.daftarpengunjung.ui.viewmodels.DataViewModel
 
 class HomeFragment : Fragment() {
+
+  private lateinit var viewModel: DataViewModel
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    viewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
+  }
 
 private var _binding: FragmentHomeBinding? = null
   // This property is only valid between onCreateView and
@@ -25,18 +33,15 @@ private var _binding: FragmentHomeBinding? = null
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-      val nama = arguments?.getString("nama")
-      val alamat = arguments?.getString("alamat")
-      val tgl = arguments?.getString("tgl")
+    val textViewNama = root.findViewById<TextView>(R.id.nama)
+    val textViewAlamat = root.findViewById<TextView>(R.id.alamat)
+    val textViewTgl = root.findViewById<TextView>(R.id.tgl)
+
+    textViewNama.text = "Nama: ${viewModel.nama}"
+    textViewAlamat.text = "Alamat: ${viewModel.alamat}"
+    textViewTgl.text = "Tanggal Masuk: ${viewModel.tgl}"
 
     val textView: TextView = binding.texthome
-    val textViewNama: TextView = binding.nama
-    val textViewAlamat: TextView = binding.alamat
-    val textViewTgl: TextView = binding.tgl
-
-    textViewNama.text = "Nama: $nama"
-    textViewAlamat.text = "Alamat: $alamat"
-    textViewTgl.text = "Tanggal Masuk: $tgl"
     return root
   }
 

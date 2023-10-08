@@ -15,9 +15,17 @@ import com.example.daftarpengunjung.R
 import com.example.daftarpengunjung.databinding.FragmentTambahBinding
 import com.example.daftarpengunjung.ui.home.HomeFragment
 import androidx.navigation.fragment.findNavController
+import com.example.daftarpengunjung.ui.viewmodels.DataViewModel
 import java.util.*
 
 class TambahFragment : Fragment() {
+
+    private lateinit var viewModel: DataViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(DataViewModel::class.java)
+    }
 
     private var _binding: FragmentTambahBinding? = null
     private val binding get() = _binding!!
@@ -37,28 +45,17 @@ class TambahFragment : Fragment() {
         Btn.setOnClickListener {
             val nama = binding.nama.text.toString()
             val alamat = binding.alamat.text.toString()
-            val tgl = Tgl.text.toString()
+            val tgl = binding.tgl.text.toString()
 
-            // Membuat bundle untuk mengirim data ke HomeFragment
-            val bundle = Bundle()
-            bundle.putString("nama", nama)
-            bundle.putString("tanggal", tgl)
-            bundle.putString("alamat", alamat)
+            // Simpan data ke ViewModel
+            viewModel.nama = nama
+            viewModel.alamat = alamat
+            viewModel.tgl = tgl
 
-            // Membuat objek HomeFragment dan mengirim data melalui bundle
-            val homeFragment = HomeFragment()
-            homeFragment.arguments = bundle
+            Toast.makeText(requireContext(), "Data berhasil ditambah, cek data pengunjung", Toast.LENGTH_SHORT).show()
 
-            // Menambahkan HomeFragment ke dalam tumpukan fragment
-            val fragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.tambah, homeFragment) // Gantilah R.id.container dengan ID container fragment Anda
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-
-            val action = TambahFragment.actionNavigationTambahToNavigationHome()
-            findNavController().navigate(action)
         }
+
 
         Tgl.setOnClickListener {
             // Mendapatkan tanggal saat ini
