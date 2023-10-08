@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Daftar Pengunjung</string>
+    <string name="title_home">Home</string>
+    <string name="title_tambah">Tambah Pengunjung</string>
+</resources>
