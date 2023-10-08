@@ -87,8 +87,7 @@
         android:hint="Pilih Tanggal"
         android:inputType="none"
         android:focusable="false"
-        android:textSize="15dp"
-        android:textColor="@color/black"
+        android:textSize="15d
         android:id="@+id/tgl"/>
 
     <Button
